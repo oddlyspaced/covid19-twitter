@@ -58,7 +58,8 @@ class TweetParser:
         content = str(content).strip()
         content = content.replace("  ", " ")
         return content
-    
+   
+    # TODO : Check if this is working or not
     # Match text patterns to see if tweet is valid
     def is_tweet_valid(self, content):
         excl = open("exclusions", "r")
