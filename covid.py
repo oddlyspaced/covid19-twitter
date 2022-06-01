@@ -10,11 +10,9 @@ import requests
 from requests import Session, Request
 
 class TweetData:
-    def __init__(self, content, time, is_verified, upvotes, attachments, phone_numbers):
+    def __init__(self, content, time, attachments, phone_numbers):
         self.content = str(content)
         self.time = str(time)
-        self.is_verified = bool(is_verified)
-        self.upvotes = int(upvotes)
         self.attachments = list(attachments)
         self.phone_numbers = list(phone_numbers)
 
@@ -34,7 +32,7 @@ class TweetParser:
             tweet_content = self.prettify_content(self.get_tweet_text(text_cut))
             tweet_media = tweet.find_elements_by_class_name("css-9pa8cd")
             medias = self.get_tweet_media(tweet_media)
-            return TweetData(tweet_content, self.twime_to_string(tweet_age), False, 0, medias, self.extract_phone(tweet_content))
+            return TweetData(tweet_content, self.twime_to_string(tweet_age), medias, self.extract_phone(tweet_content))
         except Exception as e:
             print(e)
             # no media
