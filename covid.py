@@ -9,6 +9,11 @@ import sys
 import requests
 from requests import Session, Request
 
+# Wrapper class to hold processed Tweet Data
+# content: Tweeet text
+# time: Time of tweet
+# attachements: List of attachments in the tweet
+# phone_numbers: List of phone numbers parsed from the tweet content
 class TweetData:
     def __init__(self, content, time, attachments, phone_numbers):
         self.content = str(content)
